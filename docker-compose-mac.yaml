@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  workstation:
+    hostname: kamek
+    environment:
+      - VIRTUAL_HOST=kamek.*
+      - TZ=America/Central 
+
+    volumes:
+      - 'workstation-storage-sync:/storage:nocopy'
+      - 'workstation-home-sync:/workstation:nocopy'
+    ports:
+      - '3000-3001:3000-3001'
+
+volumes:
+  workstation-home-sync:
+    external: true
+  workstation-storage-sync:
+    external: true

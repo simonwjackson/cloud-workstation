@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  workstation:
+    container_name: workstation
+    environment:
+      - PUID=1000
+      - PGID=1000
+    build:
+      context: .
+    ports:
+      - '2222:22'
+      - '22120-22129:22120-22129/udp'
+    restart: always

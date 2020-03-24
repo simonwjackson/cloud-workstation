@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  workstation:
+    hostname: peach
+    environment:
+      - VIRTUAL_HOST=peach.*
+      - TZ=America/Central 
+    build:
+      args:
+        main_user: simonwjackson
+    volumes:
+      - '/mnt/user/workstation:/workstation'
+      - '/mnt/user:/storage'
