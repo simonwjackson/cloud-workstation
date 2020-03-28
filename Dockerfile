@@ -45,20 +45,6 @@ ENTRYPOINT chmod go-w /workstation/ && \
   chown simonwjackson:simonwjackson /workstation/ && \
   /usr/sbin/sshd -eD
 
-# docker build --build-arg main_user=simonwjackson -t my_arch . && docker run --tty --interactive --user simonwjackson --rm -v /mnt/user/workstation:/workstation my_arch "zsh"
-
-#    pod2man \
-#    tpm \
-#    neovim \
-#    vim-plug \
-#    tmux \
-#    python \
-#    nvm \
-#    rsync \
-#    zsh \
-#    man \
-#    python-pip \
-
 # chmod go-w ~/
 # chmod 700 ~/.ssh
 # chmod 600 ~/.ssh/authorized_keys

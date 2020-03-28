@@ -5,7 +5,6 @@ services:
     environment:
       - VIRTUAL_HOST=kamek.*
       - TZ=America/Central 
-
     volumes:
       - 'workstation-storage-sync:/storage:nocopy'
       - 'workstation-home-sync:/workstation:nocopy'
