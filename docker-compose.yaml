@@ -2,6 +2,8 @@ version: '3.3'
 services:
   workstation:
     container_name: workstation
+    cap_add:
+      - NET_ADMIN 
     environment:
       - PUID=1000
       - PGID=1000

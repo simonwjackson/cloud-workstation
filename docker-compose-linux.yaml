@@ -1,6 +1,7 @@
 version: '3.3'
 services:
   workstation:
+    container_name: peach
     hostname: peach
     environment:
       - VIRTUAL_HOST=peach.*
