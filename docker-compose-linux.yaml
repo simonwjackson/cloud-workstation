@@ -6,6 +6,9 @@ services:
     environment:
       - VIRTUAL_HOST=peach.*
       - TZ=America/Central 
+    ports:
+      - '2211:22'
+      - '22110-22119:22110-22119/udp' 
     build:
       args:
         main_user: simonwjackson

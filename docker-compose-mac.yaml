@@ -5,12 +5,15 @@ services:
     environment:
       - VIRTUAL_HOST=kamek.*
       - TZ=America/Central 
+      - PUID=1000
+      - PGID=1000
     volumes:
       - 'workstation-storage-sync:/storage:nocopy'
       - 'workstation-home-sync:/workstation:nocopy'
     ports:
       - '3000-3001:3000-3001'
-
+      - '2222:22'
+      - '22120-22129:22120-22129/udp'
 volumes:
   workstation-home-sync:
     external: true
