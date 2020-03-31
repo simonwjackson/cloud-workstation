@@ -12,7 +12,7 @@ services:
       - 'workstation-home-sync:/workstation:nocopy'
     ports:
       - '3000-3001:3000-3001'
-      - '2222:22'
+      - '2212:22'
       - '22120-22129:22120-22129/udp'
 volumes:
   workstation-home-sync:
