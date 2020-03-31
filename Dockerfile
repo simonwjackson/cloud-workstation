@@ -1,11 +1,19 @@
 FROM archlinux/base
 ARG main_user
 
+# Set current user on host. Remove SSH?
+# https://medium.com/faun/set-current-host-user-for-docker-container-4e521cef9ffc
+
 RUN \
   echo "**** add user ****" && \ 
   printf "root ALL = (ALL:ALL) ALL\n" | tee -a /etc/sudoers && \
+  echo "**** Update AUR ****" && \ 
+  curl https://www.archlinux.org/mirrorlist/?ip_version=6 \
+  | sed 's/^#Server/Server/' \
+  | tee /etc/pacman.d/mirrorlist && \
+  pacman --sysupgrade --sync --refresh --noconfirm&& \
   echo "**** install yay ****" && \ 
-  pacman -Syyu --needed --noconfirm \
+  pacman --sync --needed --noconfirm \
     base-devel \ 
     procps-ng \
     go \
