@@ -1,13 +1,13 @@
 FROM archlinux/base
 
-RUN \
-  echo "**** add user ****" && \ 
-  printf "root ALL = (ALL:ALL) ALL\n" | tee -a /etc/sudoers && \
-  echo "**** Update AUR ****" && \ 
-  curl https://www.archlinux.org/mirrorlist/?ip_version=6 \
-  | sed 's/^#Server/Server/' \
-  | tee /etc/pacman.d/mirrorlist && \
-  pacman --sysupgrade --sync --refresh --noconfirm
+# RUN \
+#   echo "**** add user ****" && \ 
+#   printf "root ALL = (ALL:ALL) ALL\n" | tee -a /etc/sudoers && \
+#   echo "**** Update AUR ****" && \ 
+#   curl https://www.archlinux.org/mirrorlist/?ip_version=6 \
+#   | sed 's/^#Server/Server/' \
+#   | tee /etc/pacman.d/mirrorlist && \
+#   pacman --sysupgrade --sync --refresh --noconfirm
   # echo "**** install yay ****" && \ 
   # pacman --sync --needed --noconfirm \
   #   libffi \
