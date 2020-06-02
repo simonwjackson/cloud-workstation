@@ -6,9 +6,7 @@ services:
     working_dir: $WORKINGDIR
     volumes:
      - "./workstation-init:/usr/local/bin/workstation-init"
-    command: 
-      - workstation-init
-      # command: tail -f /dev/null
+    command: /usr/local/bin/workstation-init
     stdin_open: true
     tty: true
     cap_add:
