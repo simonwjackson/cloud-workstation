@@ -4,17 +4,17 @@ FROM archlinux/base
 #   curl https://www.archlinux.org/mirrorlist/?ip_version=6 \
 #   | sed 's/^#Server/Server/' \
 #   | tee /etc/pacman.d/mirrorlist && \
-  # echo "**** install networking utils ****" && \ 
-  # sudo -u builduser bash -c ' \
-  #   yay -S --needed --noconfirm \
-  #     iproute2 \
-  #     iputils \
-  # ' && \
+# echo "**** install networking utils ****" && \ 
+# sudo -u builduser bash -c ' \
+#   yay -S --needed --noconfirm \
+#     iproute2 \
+#     iputils \
+# ' && \
 
 RUN \
   echo "**** add root to sudoers ****" && \ 
   printf "root ALL = (ALL:ALL) ALL\n" | tee -a /etc/sudoers && \
-  pacman --sysupgrade --sync --refresh --noconfirm \
+  pacman --sysupgrade --sync --refresh --noconfirm && \
   echo "**** install yay ****" && \ 
   pacman --sync --needed --noconfirm \
     libffi \
