@@ -17,7 +17,7 @@ ARG pkglist
 
 RUN \
   echo "**** install essentials ****" && \ 
-  pacman --sync --needed --noconfirm \
+  pacman --sysupgrade --sync --refresh --needed --noconfirm \
     libffi \
     base-devel \ 
     procps-ng \
