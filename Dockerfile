@@ -13,7 +13,6 @@ RUN \
     go \
     curl \
     sed \
-    tee \
     git \
     sudo \
   && \
