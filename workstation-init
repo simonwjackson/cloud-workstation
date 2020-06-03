@@ -1,4 +1,3 @@
 #!/bin/sh
 
-pacman --sysupgrade --sync --refresh --noconfirm && \
 tail -f /dev/null

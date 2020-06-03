@@ -28,9 +28,15 @@ RUN \
     git \
     sudo \
   && \
-  echo "**** install yay ****" && \ 
+  echo "**** become super  ****" && \ 
   printf "${login} ALL = (ALL:ALL) ALL\n" | tee -a /etc/sudoers && \
-  sudo -u "${login} bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm'"
+  echo "**** install yay ****" && \ 
+  useradd builduser -m && \
+  passwd -d builduser && \
+  printf 'builduser ALL=(ALL) ALL' | tee -a /etc/sudoers && \
+  sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm' && \
+  userdel -r builduser && \
+  sed -i '$ d' /etc/sudoers
 
 RUN \ 
   if [ "${pkglist}" -ne "" ]; then \
