@@ -41,7 +41,11 @@ RUN \
 RUN \ 
   if [ "${pkglist}" != "" ]; then \
     echo "**** Install custom packages ****" && \ 
-    pacman --sync --needed $(comm -12 <(pacman -Slq | sort) <(curl "${pkglist}")); \
+    yay \
+     --needed \
+     --noconfirm \
+     --sync \
+     - <<< $(curl "${pkglist}" | sed -e '/^[ \t]*#/d') \
   fi
 
 VOLUME /workstation
