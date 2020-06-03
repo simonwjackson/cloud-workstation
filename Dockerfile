@@ -16,8 +16,10 @@ ARG login=workstation
 ARG pkglist
 
 RUN \
+  echo "**** update system ****" && \ 
+  pacman --sysupgrade --sync --refresh --noconfirm && \ 
   echo "**** install essentials ****" && \ 
-  pacman --sysupgrade --sync --refresh --needed --noconfirm \
+  pacman --sync --needed --noconfirm \
     libffi \
     base-devel \ 
     procps-ng \
