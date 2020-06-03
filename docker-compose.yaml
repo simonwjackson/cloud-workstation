@@ -3,7 +3,9 @@ services:
   workstation:
     container_name: workstation
     user: $USERID:$GROUPID
-    working_dir: $WORKINGDIR
+    working_dir: /workstation
+    environment:
+      - HOME=/workstation
     volumes:
      - "./workstation-init:/usr/local/bin/workstation-init"
     command: /usr/local/bin/workstation-init

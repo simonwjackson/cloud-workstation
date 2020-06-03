@@ -10,19 +10,24 @@ FROM archlinux/base
 #     iproute2 \
 #     iputils \
 # ' && \
+# printf "root ALL = (ALL:ALL) ALL\n" | tee -a /etc/sudoers && \
+
+ARG login=workstation
 
 RUN \
   echo "**** add root to sudoers ****" && \ 
-  printf "root ALL = (ALL:ALL) ALL\n" | tee -a /etc/sudoers && \
   pacman --sysupgrade --sync --refresh --noconfirm && \
   echo "**** install yay ****" && \ 
   pacman --sync --needed --noconfirm \
+    zsh \
     libffi \
     base-devel \ 
     procps-ng \
     go \
     git \
     sudo && \
+  printf "simonwjackson ALL = (ALL:ALL) ALL\n" | tee -a /etc/sudoers && \
+  printf "${login} ALL = (ALL:ALL) ALL\n" | tee -a /etc/sudoers && \
   useradd builduser -m && \
   passwd -d builduser && \
   printf 'builduser ALL=(ALL) ALL' | tee -a /etc/sudoers && \

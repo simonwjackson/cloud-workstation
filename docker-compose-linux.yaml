@@ -3,6 +3,9 @@ services:
   workstation:
     container_name: peach
     hostname: peach
+    build:
+      args:
+        login: simonwjackson
     environment:
       - VIRTUAL_HOST=peach.*
       - TZ=America/Central 
