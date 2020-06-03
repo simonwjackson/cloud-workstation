@@ -34,7 +34,7 @@ RUN \
   useradd builduser -m && \
   passwd -d builduser && \
   printf 'builduser ALL=(ALL) ALL' | tee -a /etc/sudoers && \
-  sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm' && \
+  sudo -u "builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm'" && \
   userdel -r builduser && \
   sed -i '$ d' /etc/sudoers
 
