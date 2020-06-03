@@ -39,13 +39,6 @@ RUN \
   sed -i '$ d' /etc/sudoers
 
 RUN \ 
-  if [ "${pkglist}" != "" ]; then \
-    echo "**** Install custom packages ****" \ 
-    yay \
-     --needed \
-     --noconfirm \
-     --sync \
-     - <<< $(curl "${pkglist}" | sed -e '/^[ \t]*#/d')
-  fi
+  if [ "${pkglist}" != "" ]; then echo "**** Install custom packages ****"; yay --needed --noconfirm --sync - <<< $(curl "${pkglist}" | sed -e '/^[ \t]*#/d'); fi
 
 VOLUME /workstation
