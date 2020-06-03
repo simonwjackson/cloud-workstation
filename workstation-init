@@ -1,3 +1,8 @@
 #!/bin/sh
-
-tail -f /dev/null
+chmod go-w /workstation/ && \
+chown simonwjackson:simonwjackson /workstation/ && \
+echo "**** Update AUR ****" && \ 
+curl https://www.archlinux.org/mirrorlist/?ip_version=6 \
+  | sed 's/^#Server/Server/' \
+  | tee /etc/pacman.d/mirrorlist && \ 
+/usr/sbin/sshd -e
