@@ -12,6 +12,8 @@ RUN \
     procps-ng \
     go \
     curl \
+    sed \
+    tee \
     git \
     sudo \
   && \
@@ -21,7 +23,9 @@ RUN \
   useradd builduser -m && \
   passwd -d builduser && \
   printf 'builduser ALL=(ALL) ALL' | tee -a /etc/sudoers && \
-  sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm' && \
+  sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm'
+
+RUN \
   echo "**** install networking utils ****" && \ 
   sudo -u builduser bash -c ' \
     yay -S --needed --noconfirm \
