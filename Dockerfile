@@ -31,9 +31,9 @@ RUN \
   sudo -u "${login} bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm'"
 
 RUN \ 
-  if [ "${pkglist}" -ne "" ] then 
+  if [ "${pkglist}" -ne "" ]; then \
     echo "**** Install custom packages ****" && \ 
-    pacman --sync --needed $(comm -12 <(pacman -Slq | sort) <(curl "${pkglist}"))
+    pacman --sync --needed $(comm -12 <(pacman -Slq | sort) <(curl "${pkglist}")); \
   fi
 
 VOLUME /workstation
