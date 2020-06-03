@@ -6,6 +6,7 @@ services:
     build:
       args:
         login: simonwjackson
+        pkglist: "https://raw.githubusercontent.com/simonwjackson/dotfiles/master/.config/packages/arch"
     environment:
       - VIRTUAL_HOST=peach.*
       - TZ=America/Central 
@@ -14,5 +15,6 @@ services:
       - /etc/passwd:/etc/passwd:ro
       - /etc/shadow:/etc/shadow:ro
       - /etc/sudoers.d:/etc/sudoers.d:ro 
-      - '/mnt/user/workstation:/workstation'
-      - '/mnt/user:/storage'
+      - /mnt/user/workstation:/workstation
+      - /mnt/user:/storage
+      - /mnt/disk3/cache/pacman/pkg:/usr/local/var/cache/pacman/pkg/

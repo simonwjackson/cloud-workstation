@@ -1,4 +1,4 @@
 #!/bin/sh
 
-echo "Hello world?"
+pacman --sysupgrade --sync --refresh --noconfirm && \
 tail -f /dev/null

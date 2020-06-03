@@ -13,27 +13,28 @@ FROM archlinux/base
 # printf "root ALL = (ALL:ALL) ALL\n" | tee -a /etc/sudoers && \
 
 ARG login=workstation
+ARG pkglist
 
 RUN \
-  echo "**** add root to sudoers ****" && \ 
-  pacman --sysupgrade --sync --refresh --noconfirm && \
-  echo "**** install yay ****" && \ 
+  echo "**** install essentials ****" && \ 
   pacman --sync --needed --noconfirm \
-    zsh \
     libffi \
     base-devel \ 
     procps-ng \
     go \
+    curl \
     git \
-    sudo && \
-  printf "simonwjackson ALL = (ALL:ALL) ALL\n" | tee -a /etc/sudoers && \
+    sudo \
+  && \
+  echo "**** install yay ****" && \ 
   printf "${login} ALL = (ALL:ALL) ALL\n" | tee -a /etc/sudoers && \
-  useradd builduser -m && \
-  passwd -d builduser && \
-  printf 'builduser ALL=(ALL) ALL' | tee -a /etc/sudoers && \
-  sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm' && \
-  userdel -r builduser && \
-  sed -i '$ d' /etc/sudoers
+  sudo -u "${login} bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm'"
+
+RUN \ 
+  if [ "${pkglist}" -ne "" ] then 
+    echo "**** Install custom packages ****" && \ 
+    pacman --sync --needed $(comm -12 <(pacman -Slq | sort) <(curl "${pkglist}"))
+  fi
 
 VOLUME /workstation
 

@@ -8,4 +8,6 @@ docker-sync start
 docker-compose -f ./docker-compose.yaml -f ./docker-compose-dev.yaml -f docker-compose-mac.yaml up
 
 # Linux
-USERID=1000 GROUPID=100 WORKINGDIR=/mnt/user/workstation docker-compose -f ./docker-compose.yaml -f docker-compose-linux.yaml up 
+docker-compose -f ./docker-compose.yaml -f docker-compose-linux.yaml up 
+
+https://raw.githubusercontent.com/simonwjackson/dotfiles/master/.config/packages/arch
