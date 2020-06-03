@@ -39,7 +39,7 @@ RUN \
   sed -i '$ d' /etc/sudoers
 
 RUN \ 
-  if [ "${pkglist}" -ne "" ]; then \
+  if [ "${pkglist}" != "" ]; then \
     echo "**** Install custom packages ****" && \ 
     pacman --sync --needed $(comm -12 <(pacman -Slq | sort) <(curl "${pkglist}")); \
   fi
