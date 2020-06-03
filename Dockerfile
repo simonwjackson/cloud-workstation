@@ -28,7 +28,6 @@ RUN \
   echo "**** install networking utils ****" && \ 
   sudo -u builduser bash -c ' \
     yay -S --needed --noconfirm \
-      mosh-git \
       openssh \
       iproute2 \
       iputils \
@@ -66,3 +65,5 @@ EXPOSE 22
 # useradd \
 #   -d /workstation \
 #   -m ${login} && \
+
+# mosh-git \

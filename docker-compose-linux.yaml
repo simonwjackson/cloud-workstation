@@ -7,6 +7,9 @@ services:
       args:
         login: simonwjackson
         pkglist: "https://raw.githubusercontent.com/simonwjackson/dotfiles/master/.config/packages/arch"
+    ports:
+      - '2211:22'
+      - '22110-22119:22110-22119/udp' 
     environment:
       - VIRTUAL_HOST=peach.*
       - TZ=America/Central 
