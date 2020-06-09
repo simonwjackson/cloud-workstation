@@ -2,17 +2,12 @@ version: '3.3'
 services:
   workstation:
     container_name: workstation
-    user: $USERID:$GROUPID
     working_dir: /workstation
-    environment:
-      - HOME=/workstation
-    volumes:
-     - "./workstation-init:/usr/local/bin/workstation-init"
-    command: /usr/local/bin/workstation-init
     stdin_open: true
     tty: true
     cap_add:
       - NET_ADMIN 
     build:
-      context: .
+      context: ./
+    command: tail -f /dev/null
     restart: always
