@@ -1,0 +1,11 @@
+FROM archlinux/base
+
+ARG USER=workstation
+ARG HOME=/workstation
+
+RUN curl -s \
+  "https://raw.githubusercontent.com/simonwjackson/dotfiles/master/bin/setup/setup.sh" | sh
+
+VOLUME /workstation
+
+EXPOSE 22
