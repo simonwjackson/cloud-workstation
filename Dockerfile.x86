@@ -2,9 +2,9 @@ FROM archlinux/base
 
 ARG USER=workstation
 ARG HOME=/workstation
+ARG SCRIPT=https://raw.githubusercontent.com/simonwjackson/dotfiles/master/bin/setup/setup.sh
 
-RUN curl -s \
-  "https://raw.githubusercontent.com/simonwjackson/dotfiles/master/bin/setup/setup.sh" | sh
+RUN curl -s "${SCRIPT}" | sh
 
 VOLUME /workstation
 
