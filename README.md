@@ -2,14 +2,14 @@
 
 A dependable, repeatable sane development workstation that runs inside of a docker container
 
-# X86
+## X86
 docker-compose \
   --file ./docker-compose.yaml \
   --file ./docker-compose-arm.yaml \
   up \
   --detach
 
-# ARM
+## ARM
 docker-compose \
   --file ./docker-compose.yaml \
   --file ./docker-compose-arm.yaml \
