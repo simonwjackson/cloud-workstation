@@ -6,7 +6,7 @@ A dependable, repeatable sane development workstation that runs inside of a dock
 ```bash
 docker-compose \
   --file ./docker-compose.yaml \
-  --file ./docker-compose-arm.yaml \
+  --file ./docker-compose-x86.yaml \
   up \
   --detach
 ```
