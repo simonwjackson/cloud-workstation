@@ -8,6 +8,7 @@ docker-compose \
   --file ./docker-compose.yaml \
   --file ./docker-compose-x86.yaml \
   up \
+  --no-recreate \
   --detach
 ```
 
@@ -17,6 +18,7 @@ docker-compose \
   --file ./docker-compose.yaml \
   --file ./docker-compose-arm.yaml \
   up \
+  --no-recreate \
   --detach
 ```
 
