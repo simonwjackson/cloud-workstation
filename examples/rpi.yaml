@@ -3,11 +3,8 @@ services:
   workstation:
     container_name: peach
     hostname: peach
-    ports:
-      - '2211:22'
-      - '22110-22119:22110-22119/udp' 
+    networking: host
     environment:
-      - VIRTUAL_HOST=peach.*
       - TZ=America/Central 
     volumes:
-      - /media/usbkey2/workstation:/workstation
+      - /storage/workstation:/workstation
