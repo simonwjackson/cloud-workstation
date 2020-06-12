@@ -7,7 +7,5 @@ services:
     tty: true
     cap_add:
       - NET_ADMIN 
-    build:
-      context: ./
     command: tail -f /dev/null
     restart: always
