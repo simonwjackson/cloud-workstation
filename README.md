@@ -30,8 +30,11 @@ docker exec \
   --user <USER> \
   --interactive \
   --tty \
+  --env TERM=xterm-256color \
   <CONATINER> \
-  sh -c '$SHELL'
+  script \
+    -q \
+    -c '$SHELL'
 ```
 
 ### Connect (via SSH)
